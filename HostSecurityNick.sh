@@ -1,4 +1,4 @@
-apt-get update && apt-get upgrade
+apt-get update && apt-get upgrade -y
 
 
 echo "安裝防禦套件!!!!!!"
@@ -25,4 +25,10 @@ echo "重啟服務loading...."
 service denyhosts restart
 
 service portsentry restart
+
+
+echo "製作通知設定"
+
+cp profile /etc/profile
+
 
