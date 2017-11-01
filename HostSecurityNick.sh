@@ -31,4 +31,3 @@ echo "製作通知設定"
 
 cp profile /etc/profile
 
-
