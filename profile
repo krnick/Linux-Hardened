@@ -34,3 +34,11 @@ echo "[$NOW]: $REMOTEHOST : $USER .`pinky |awk '{print $6}'`" > /tmp/userlogin.l
 mail -s "User Login  !!" sungboss2004@gmail.com < /tmp/userlogin.log
 rm -f /tmp/userlogin.log
 
+
+
+
+
+
+#rm backup to home dir .deleted-files
+current_file="$(pwd)/useful_shell/newrm"
+alias rm=$current_file
