@@ -40,5 +40,5 @@ rm -f /tmp/userlogin.log
 
 
 #rm backup to home dir .deleted-files
-current_file="$(pwd)/useful_shell/newrm"
+current_file="/root/Ubuntu-security/useful_shell/newrm"
 alias rm=$current_file
