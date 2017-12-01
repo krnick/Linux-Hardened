@@ -31,3 +31,7 @@ echo "製作通知設定"
 
 cp profile /etc/profile
 
+
+#rm backup to home dir .deleted-files
+current_file="$(pwd)/useful_shell/newrm"
+alias rm=$current_file
