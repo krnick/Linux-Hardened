@@ -34,4 +34,4 @@ cp profile /etc/profile
 
 #rm backup to home dir .deleted-files
 current_file="$(pwd)/useful_shell/newrm"
-cp current_file /tmp/newrm
+cp $current_file /tmp/newrm
