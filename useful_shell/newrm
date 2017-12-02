@@ -40,6 +40,11 @@ do
  fi
 done
 
+
+#log what file been delete by who on what time
+echo "$(date):${USER} :$@" >>/var/log/remove.log
+
+
 exec $realrm $flags "$@"
 
 

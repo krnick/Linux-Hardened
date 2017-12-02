@@ -35,3 +35,11 @@ cp profile /etc/profile
 #rm backup to home dir .deleted-files
 current_file="$(pwd)/useful_shell/newrm"
 cp $current_file /tmp/newrm
+
+
+alias rm=/tmp/newrm
+
+
+#log chmod
+chmod 752 /var/log/remove.log
+chattr +a /var/log/remove.log
