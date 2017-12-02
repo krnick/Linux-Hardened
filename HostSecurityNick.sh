@@ -40,6 +40,9 @@ cp $current_file /tmp/newrm
 alias rm=/tmp/newrm
 
 
+#log file touch
+touch /var/log/remove.log
+
 #log chmod
 chmod 752 /var/log/remove.log
 chattr +a /var/log/remove.log
