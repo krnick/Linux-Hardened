@@ -3,7 +3,7 @@ apt-get update && apt-get upgrade -y
 
 echo "安裝監控套件"
 apt-get install sysdig
-
+#sysdig -c spy_users "user.name=nick"
 
 echo "安裝防禦套件!!!!!!"
 
