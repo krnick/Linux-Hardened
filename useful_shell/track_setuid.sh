@@ -7,7 +7,7 @@ mtime=7
 
 #find -perm  4000 up is setuid
 
-find / -type f  -perm +4000 -print0 |while read -d '' -r match
+find / -type f  -perm /4000 -xdev  -print0 |while read -d '' -r match
 
 do
 	if [ -x "$match" ] ; then

