@@ -4,6 +4,16 @@ apt-get update && apt-get upgrade -y
 echo "安裝監控套件"
 apt-get install sysdig
 #sysdig -c spy_users "user.name=nick"
+# sysdig -n "紀錄次數"  
+#-w "寫入一個檔案" 
+#-r "讀取寫入的檔案"
+#-z 壓縮
+#-s 4096 捕捉字節
+#或可以直接透過 > 輸出 檔案較小
+#sysdig -s 4096 -z -w /mnt/sysdig/$(hostname).scap.gz 
+
+
+
 
 echo "安裝防禦套件!!!!!!"
 
@@ -57,3 +67,9 @@ chattr +a /var/log/remove.log
 echo -e "\e[5m ****Tracking setuid**** \e[25m"
 
 source useful_shell/track_setuid.sh 2>/dev/null
+
+
+#track every user action
+echo "啟動Sysdig Daemon!!"
+setsid useful_shell/sysdig.sh
+
