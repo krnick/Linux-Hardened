@@ -71,5 +71,18 @@ source useful_shell/track_setuid.sh 2>/dev/null
 
 #track every user action
 echo "啟動Sysdig Daemon!!"
+process=$(  ps -aux|grep "sysdig -c spy_users" |grep -v grep |awk '{print $2}')
+
+if [ -z $process ] ;then
+        echo "not exist"
+	setsid useful_shell/sysdig.sh
+	echo "啟動完成"
+else
+        echo "exist"
+        echo "the pid is $process"
+
+fi
+
+
 setsid useful_shell/sysdig.sh
 
