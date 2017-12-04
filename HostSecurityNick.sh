@@ -1,6 +1,10 @@
 apt-get update && apt-get upgrade -y
 
 
+echo "安裝監控套件"
+apt-get install sysdig
+
+
 echo "安裝防禦套件!!!!!!"
 
 apt-get install denyhosts portsentry fail2ban
