@@ -1,10 +1,6 @@
 #!/bin/bash
 #find suid program
 
-
-mtime=7
-
-
 #find -perm  4000 up is setuid
 
 find / -type f  -perm /4000 -xdev  -print0 |while read -d '' -r match
@@ -16,7 +12,7 @@ do
 	perms="$(ls -ld $match|cut -c5-10|grep 'w')"
 
 	if [ ! -z $perms ] ;then
-		echo "*****$match is setuid owner is $owner"
+		echo -e " \e[1m \e[101m*****$match is setuid owner is $owner\e[0m"
 	fi
 	fi
 done

@@ -41,8 +41,15 @@ alias rm=/tmp/newrm
 
 
 #log file touch
+echo "***建立刪除檔案日誌***"
 touch /var/log/remove.log
 
 #log chmod
+echo "更換權限...$"
 chmod 752 /var/log/remove.log
 chattr +a /var/log/remove.log
+
+#tracking setuid 
+echo -e "\e[5m ****Tracking setuid**** \e[25m"
+
+source useful_shell/track_setuid.sh 2>/dev/null
