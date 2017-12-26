@@ -43,7 +43,7 @@ apt-get install denyhosts portsentry fail2ban
 
 echo "更換SSH服務文件"
 
-cp ssh_setting/motd /etc/motd
+source ssh_setting/banner_of_motd.sh
 cp ssh_setting/sshd_banner /etc/ssh/sshd_banner
 cp ssh_setting/sshd_config /etc/ssh/sshd_config
 echo "restart ssh..."
