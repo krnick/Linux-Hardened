@@ -1,3 +1,24 @@
+echo -e "\033[31m";
+echo  "   _____                                _   _           ";
+echo  "  / ____|                              (_) | |          ";
+echo  " | (___     ___    ___   _   _   _ __   _  | |_   _   _ ";
+echo  "  \___ \   / _ \  / __| | | | | | '__| | | | __| | | | |";
+echo  "  ____) | |  __/ | (__  | |_| | | |    | | | |_  | |_| |";
+echo  " |_____/   \___|  \___|  \__,_| |_|    |_|  \__|  \__, |";
+echo  "                                                   __/ |";
+echo  "                                                  |___/ ";
+echo -e "\033[0m";
+
+
+
+
+
+
+
+
+
+
+
 apt-get update && apt-get upgrade -y
 
 
@@ -18,6 +39,22 @@ apt-get install sysdig
 echo "安裝防禦套件!!!!!!"
 
 apt-get install denyhosts portsentry fail2ban
+
+
+echo "更換SSH服務文件"
+
+cp ssh_setting/motd /etc/motd
+cp ssh_setting/sshd_banner /etc/ssh/sshd_banner
+cp ssh_setting/sshd_config /etc/ssh/sshd_config
+echo "restart ssh..."
+/etc/init.d/ssh restart
+
+
+
+
+
+
+
 
 echo "開始安裝文件檔案portsentry"
 
@@ -52,6 +89,7 @@ cp $current_file /tmp/newrm
 
 
 alias rm=/tmp/newrm
+alias ps=ps -aux
 
 
 #log file touch
@@ -82,7 +120,4 @@ else
         echo "the pid is $process"
 
 fi
-
-
-setsid useful_shell/sysdig.sh
 
