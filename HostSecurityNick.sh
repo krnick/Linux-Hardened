@@ -33,6 +33,8 @@ apt-get install sysdig
 #或可以直接透過 > 輸出 檔案較小
 #sysdig -s 4096 -z -w /mnt/sysdig/$(hostname).scap.gz 
 
+#open up cd auto spell
+echo "shopt -s cdspell"
 
 
 
@@ -120,4 +122,13 @@ else
         echo "the pid is $process"
 
 fi
+
+#block all ip from hosts.deny via python
+echo "block all ip from hosts.deny via python"
+/usr/bin/python /home/hacknick/Ubuntu-security/readHostDeny.py
+
+
+
+
+
 
