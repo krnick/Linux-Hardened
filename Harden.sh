@@ -10,19 +10,9 @@ echo  "                                                  |___/ ";
 echo -e "\033[0m";
 
 
-
-
-
-
-
-
-
-
-
 apt-get update && apt-get upgrade -y
 
-
-echo "安裝監控套件"
+echo "Install monitoring tools"
 apt-get install sysdig
 #sysdig -c spy_users "user.name=nick"
 # sysdig -n "紀錄次數"  
@@ -37,13 +27,11 @@ apt-get install sysdig
 echo "shopt -s cdspell"
 
 
+echo "Install a defensing tools"
 
-echo "安裝防禦套件!!!!!!"
+apt-get install denyhosts portsentry fail2ban -y
 
-apt-get install denyhosts portsentry fail2ban
-
-
-echo "更換SSH服務文件"
+echo "Replace the SSH service file"
 
 source ssh_setting/banner_of_motd.sh
 cp ssh_setting/sshd_banner /etc/ssh/sshd_banner
@@ -51,55 +39,40 @@ cp ssh_setting/sshd_config /etc/ssh/sshd_config
 echo "restart ssh..."
 /etc/init.d/ssh restart
 
-
-
-
-
-
-
-
-echo "開始安裝文件檔案portsentry"
+echo "Start installing  portsentry"
 
 cp portsentry.conf /etc/portsentry/portsentry.conf
 
-echo "更換完成....."
-
-echo "開始更換文件檔案denyhosts.conf"
-
 cp denyhosts.conf /etc/denyhosts.conf
+
+echo "Replacement  config file is complete....."
 
 echo "done!"
 
-
-
-
-echo "重啟服務loading...."
+echo "Restart service loading...."
 
 service denyhosts restart
 
 service portsentry restart
 
 
-echo "製作通知設定"
+echo "Create notification settings"
 
 cp profile /etc/profile
-
 
 #rm backup to home dir .deleted-files
 current_file="$(pwd)/useful_shell/newrm"
 cp $current_file /tmp/newrm
 
-
 alias rm=/tmp/newrm
 alias ps=ps -aux
 
-
 #log file touch
-echo "***建立刪除檔案日誌***"
+echo "***Create delete archive log***"
 touch /var/log/remove.log
 
 #log chmod
-echo "更換權限...$"
+echo "Change permission..."
 chmod 752 /var/log/remove.log
 chattr +a /var/log/remove.log
 
@@ -110,22 +83,17 @@ source useful_shell/track_setuid.sh 2>/dev/null
 
 
 #track every user action
-echo "啟動Sysdig Daemon!!"
+echo "start Sysdig Daemon!!"
 process=$(  ps -aux|grep "sysdig -c spy_users" |grep -v grep |awk '{print $2}')
 
 if [ -z $process ] ;then
         echo "not exist"
 	setsid useful_shell/sysdig.sh
-	echo "啟動完成"
+	echo "done"
 else
         echo "exist"
         echo "the pid is $process"
-
 fi
-
-#block all ip from hosts.deny via python
-echo "block all ip from hosts.deny via python"
-/usr/bin/python /home/hacknick/Ubuntu-security/readHostDeny.py
 
 
 
